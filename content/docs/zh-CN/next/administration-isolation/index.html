@@ -97,11 +97,11 @@
 <blockquote>
 <p><strong>备注</strong></p>
 <ul>
-<li>Do not set a bookie rack name to slash (<code>/</code>) or an empty string (<code>&quot;&quot;</code>) if you use Pulsar earlier than 2.7.5, 2.8.3, and 2.9.2. If you use Pulsar 2.7.5, 2.8.3, 2.9.2 or later versions, it falls back to <code>/default-rack</code> or <code>/default-region/default-rack</code>.</li>
-<li>When <code>RackawareEnsemblePlacementPolicy</code> is enabled, the rack name is not allowed to contain slash (<code>/</code>) except for the beginning and end of the rack name string. For example, rack name like <code>/rack0</code> is okay, but <code>/rack/0</code> is not allowed.</li>
-<li>When <code>RegionawareEnsemblePlacementPolicy</code> is enabled, the rack name can only contain one slash (<code>/</code>) except for the beginning and end of the rack name string. For example, rack name like <code>/region0/rack0</code> is okay, but <code>/region0rack0</code> and <code>/region0/rack/0</code> are not allowed.</li>
+<li>如果您在 Pulsar 早于 2.7.5, 2.8.3, and 2.9.2 之前请不要设置一个 bookie 名称为斜杠(<code>/</code>) 或空字符串(<code>&quot;&quot;</code>)。 如果您使用 Pulsar 2.7.5, 2.8.3, 2.9.2 或更晚版本，它会返回<code>/default-rack</code>或 <code>/default-region/default-rack</code>。</li>
+<li>当 <code>RackawareEnsemblePlacementPolicy</code>已启用，rack 名称不允许包含斜杠(<code>/</code>)，但 rack 名称字符串的开头和结尾除外。 例如，像 <code>/rack0</code> 这样的 rack 名称是正确的，但是 <code>/rack/0</code> 是不允许的。</li>
+<li>当 <code>RegionawareEnsemblePlacementPolicy</code> 已启用， rack 名称只能包含一个 slash (<code>/</code>)，但 rack 名称字符串的开头和结尾除外。 例如，像 <code>/region0/rack0</code> 这样的 rack 名称是正确的，但是 <code>/region0rack0</code> 和 <code>/region0/rack/0</code> 是不允许的。</li>
 </ul>
-<p>For the bookie rack name restrictions, see <a href="https://pulsar.apache.org/tools/pulsar-admin/">pulsar-admin bookies set-bookie-rack</a>.</p>
+<p>关于 bookie 的名称限制，请参阅<a href="https://pulsar.apache.org/tools/pulsar-admin/">pulsar-admin bookies set-bookie-rack</a>。</p>
 </blockquote>
 </span></div></div><div id="tab-group-2638-content-2640" class="tab-pane" data-group="group_2638" tabindex="-1"><div><span><p><a href="https://pulsar.apache.org/admin-rest-api/?version=master&amp;apiversion=v2#operation/setBookieAffinityGroup">POST /admin/v2/namespaces/{tenant}/{namespace}/persistence/bookieAffinity</a></p>
 </span></div></div><div id="tab-group-2638-content-2641" class="tab-pane" data-group="group_2638" tabindex="-1"><div><span><p>使用Java admin API设置命名空间隔离策略, 点击<a href="https://github.com/apache/pulsar/blob/master/pulsar-client-admin/src/main/java/org/apache/pulsar/client/admin/internal/NamespacesImpl.java#L1164">此处</a>.</p>

@@ -80,7 +80,7 @@
 If you're looking to run a full production Pulsar installation, see the <a href="/docs/zh-CN/2.9.0/deploy-bare-metal">Deploying a Pulsar instance</a> guide.</p>
 </blockquote>
 <h2><a class="anchor" aria-hidden="true" id="安装单机模式-pulsar"></a><a href="#安装单机模式-pulsar" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>安装单机模式 Pulsar</h2>
-<p>This tutorial guides you through every step of installing Pulsar locally.</p>
+<p>本教程将详细介绍安装的每一步。</p>
 <h3><a class="anchor" aria-hidden="true" id="系统要求"></a><a href="#系统要求" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>系统要求</h3>
 <p>Currently, Pulsar is available for 64-bit <strong>macOS</strong>, <strong>Linux</strong>, and <strong>Windows</strong>. To use Pulsar, you need to install 64-bit JRE/JDK 8 or later versions.</p>
 <blockquote>
@@ -168,7 +168,7 @@ pulsar-io-aerospike-2.9.1.nar
 <blockquote>
 <p><strong>Tip</strong></p>
 <ul>
-<li>Since <code>2.2.0</code> release, Pulsar releases a separate binary distribution, containing the tiered storage offloaders. - To enable tiered storage feature, follow the instructions below; otherwise skip this section.</li>
+<li>Since <code>2.2.0</code> release, Pulsar releases a separate binary distribution, containing the tiered storage offloaders. 可以通过以下说明来启用分层存储卸载容器，不启用则跳至下一部分。</li>
 </ul>
 </blockquote>
 <p>要使用<a href="/docs/zh-CN/2.9.0/concepts-tiered-storage">分层存储卸载程序</a>，需要在所有 broker 节点上下载卸载程序的压缩文件，下载方式有以下几种：</p>

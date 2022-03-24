@@ -76,13 +76,13 @@
               }
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://crowdin.com/project/apache-pulsar/zh-CN" target="_blank" rel="noreferrer noopener">Translate</a><h1 id="__docusaurus" class="postHeaderTitle">使用 OAuth 2.0 访问令牌进行客户端身份验证</h1></header><article><div><span><p>Pulsar支持使用 OAuth 2.0 访问令牌方式验证客户端。 你可以使用 Oauth 2.0 访问令牌来识别 Pulsar 客户端。通过给 Pulsar 客户端关联一些 &quot;principal&quot; 或 &quot;role&quot;，可以用来授权客户端允许执行某些操作 (例如：发布消息主题或从主题消费消息) 。</p>
-<p>This module is used to support the <a href="/docs/zh-CN/next/security-extending/#client-authentication-plugin">Pulsar client authentication plugin</a> for OAuth 2.0. After communicating with the OAuth 2.0 server, the Pulsar client gets an <code>access token</code> from the OAuth 2.0 server, and passes this <code>access token</code> to the Pulsar broker to do the authentication. 默认情况下，Broker 可以配置使用 <code>org.apache.pulsar.broker.authentication.AuthenticationProviderToken</code>来进行认证。 或者你可以添加你自己的<code>AuthenticationProvider</code> 来进行认证。</p>
+<p>这个模块用于支持OAth2.0的 <a href="/docs/zh-CN/next/security-extending/#client-authentication-plugin">Pulsar 客户端认证插件</a> 在和OAuth2.0服务器通信之后，Pulsar 客户端会从OAth2.0服务器获取访问令牌，然后将这个访问令牌传递给Pulsar broker进行身份认证。 默认情况下，Broker 可以配置使用 <code>org.apache.pulsar.broker.authentication.AuthenticationProviderToken</code>来进行认证。 或者你可以添加你自己的<code>AuthenticationProvider</code> 来进行认证。</p>
 <h2><a class="anchor" aria-hidden="true" id="配置认证提供者"></a><a href="#配置认证提供者" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>配置认证提供者</h2>
 <p>这个库允许你使用从OAuth 2.0 认证服务器获取的访问令牌，来认证 Pulsar 客户端。身份认证服务是一个<em>令牌发行者</em>。</p>
 <h3><a class="anchor" aria-hidden="true" id="认证类型"></a><a href="#认证类型" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>认证类型</h3>
 <p>认证类型决定如何通过 OAuth 2.0 授权流程获取访问令牌。</p>
 <blockquote>
-<p>Note Currently, the Pulsar Java client only supports the <code>client_credentials</code> authentication type .</p>
+<p>注意： 目前，Pulsar Java 客户端只支持<code>client_credentials</code>这种认证类型。</p>
 </blockquote>
 <h4><a class="anchor" aria-hidden="true" id="客户端凭据"></a><a href="#客户端凭据" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>客户端凭据</h4>
 <p>以下表格是 <code>客户端凭据</code> 认证类型支持的参数列表。</p>
@@ -91,7 +91,7 @@
 <tr><th>参数名</th><th>说明</th><th>示例</th><th>是否必选项</th></tr>
 </thead>
 <tbody>
-<tr><td><code>type</code></td><td>OAuth 2.0 authentication type.</td><td><code>客户端凭据</code> (默认)</td><td>可选</td></tr>
+<tr><td><code>type</code></td><td>Oauth 2.0 认证类型</td><td><code>客户端凭据</code> (默认)</td><td>可选</td></tr>
 <tr><td><code>issuerUrl</code></td><td>认证提供商的URL，Pulsar 客户端降根据这个URL 获取到访问令牌。</td><td><code>https://accounts.google.com</code></td><td>Required</td></tr>
 <tr><td><code>privateKey</code></td><td>JSON凭据文件的 URL</td><td>支持如下的格式: <br> <li> <code>file:///path/to/file</code> <li><code>file:/path/to/file</code> <li> <code>data:application/json;base64,&lt;base64-encoded value&gt;</code></td><td>Required</td></tr>
 <tr><td><code>audience</code></td><td>Pulsar 集群的 OAuth 2.0 &quot;资源服务&quot; 的标识符</td><td><code>https://broker.example.com</code></td><td>可选</td></tr>
@@ -123,7 +123,7 @@
 <ul>
 <li>此插件中 <code>issuerUrl</code>参数映射到<code>--url https://dev-kt-aa9ne.us.auth0.com</code>。</li>
 <li>此插件中<code>privateKey</code> 文件参数至少包含<code>client_id</code> 和 <code>client_secret</code> 两个字段。</li>
-<li>此插件中 <code>audience</code> 参数映射到<code>audience&quot;:&quot;https://dev-kt-aa9ne.us.auth0.com/api/v2/&quot;</code>。 This field is only used by some identity providers.</li>
+<li>此插件中 <code>audience</code> 参数映射到<code>audience&quot;:&quot;https://dev-kt-aa9ne.us.auth0.com/api/v2/&quot;</code>。 此字段仅供某些身份提供者使用。</li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="客户端配置"></a><a href="#客户端配置" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>客户端配置</h2>
 <p>你可以在以下的 Pulsar 客户端中使用 Oauth2 认证。</p>
@@ -148,7 +148,7 @@ PulsarClient client = PulsarClient.builder()
     .build();
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="c-client"></a><a href="#c-client" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>C++ client</h3>
-<p>C++ 客户端和 Java 客户端类似。 You need to provide the parameters of <code>issuerUrl</code>, <code>private_key</code> (the credentials file path), and <code>audience</code>.</p>
+<p>C++ 客户端和 Java 客户端类似。 你需要提供<code>issuerUrl</code>, <code>private_key</code> (认证信息文件路径), 和 <code>audience</code> 三个参数</p>
 <pre><code class="hljs css language-c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;pulsar/Client.h&gt;</span></span>
 
 pulsar::ClientConfiguration <span class="hljs-built_in">config</span>;
@@ -190,7 +190,7 @@ params = <span class="hljs-string">'''
 client = Client(<span class="hljs-string">"pulsar://my-cluster:6650"</span>, authentication=AuthenticationOauth2(params))
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="nodejs-客户端"></a><a href="#nodejs-客户端" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Node.js 客户端</h3>
-<p>To enable OAuth2 authentication in Node.js client, you need to configure OAuth2 authentication. This example shows how to configure OAuth2 authentication in Node.js client.</p>
+<p>如果要在Node.js客户端中开启OAuth2认证，你需要配置OAuth2认证信息。 如下是一个在 Node.js 客户端中配置 OAuth2 认证的示例。</p>
 <pre><code class="hljs css language-JavaScript">    <span class="hljs-keyword">const</span> Pulsar = <span class="hljs-built_in">require</span>(<span class="hljs-string">'pulsar-client'</span>);
     <span class="hljs-keyword">const</span> issuer_url = process.env.ISSUER_URL;
     <span class="hljs-keyword">const</span> private_key = process.env.PRIVATE_KEY;
@@ -226,7 +226,7 @@ client = Client(<span class="hljs-string">"pulsar://my-cluster:6650"</span>, aut
     })();
 </code></pre>
 <blockquote>
-<p>Note: The support for OAuth2 authentication is only available in Node.js client 1.6.2 and later versions.</p>
+<p>注意: 对 OAuth2 身份验证的支持仅在 Node.js 客户端1.6.2 及以上版本可用。</p>
 </blockquote>
 <h2><a class="anchor" aria-hidden="true" id="cli-配置"></a><a href="#cli-配置" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CLI 配置</h2>
 <p>本节介绍如何使用 Pulsar CLI 工具通过 OAuth2 身份验证插件连接到 Pulsar 集群。</p>

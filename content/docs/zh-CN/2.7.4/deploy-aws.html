@@ -142,16 +142,16 @@ id_rsa               id_rsa.pub
 <tr><th style="text-align:left">变量名称</th><th style="text-align:left">说明</th><th style="text-align:left">默认值</th></tr>
 </thead>
 <tbody>
-<tr><td style="text-align:left"><code>public_key_path</code></td><td style="text-align:left">您生成的公钥的路径。</td><td style="text-align:left"><code>~/.ssh/id_rsa.pub</code></td></tr>
-<tr><td style="text-align:left"><code>region</code></td><td style="text-align:left">Pulsar集群所在的AWS区域</td><td style="text-align:left"><code>us-west-2</code></td></tr>
-<tr><td style="text-align:left"><code>availability_zone</code></td><td style="text-align:left">Pulsar集群所在的AWS区域</td><td style="text-align:left"><code>us-west-2a</code></td></tr>
+<tr><td style="text-align:left"><code>公共密钥路径</code></td><td style="text-align:left">您生成的公钥的路径。</td><td style="text-align:left"><code>~/.ssh/id_rsa.pub</code></td></tr>
+<tr><td style="text-align:left"><code>地区</code></td><td style="text-align:left">Pulsar集群所在的AWS区域</td><td style="text-align:left"><code>us-west-2</code></td></tr>
+<tr><td style="text-align:left"><code>可用性和可用性区域</code></td><td style="text-align:left">Pulsar集群所在的AWS区域</td><td style="text-align:left"><code>us-west-2a</code></td></tr>
 <tr><td style="text-align:left"><code>aws_ami</code></td><td style="text-align:left">集群使用的 <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html">Amazon 机器图像</a> (AME)</td><td style="text-align:left"><code>ami-9fa343e7</code></td></tr>
 <tr><td style="text-align:left"><code>num_zookeeper_nodes</code></td><td style="text-align:left">ZooKeeper 集群中的 <a href="https://zookeeper.apache.org">ZooKeeper</a> 节点数</td><td style="text-align:left">3</td></tr>
-<tr><td style="text-align:left"><code>num_bookie_nodes</code></td><td style="text-align:left">集群中的 bookie 数量</td><td style="text-align:left">3</td></tr>
-<tr><td style="text-align:left"><code>num_broker_nodes</code></td><td style="text-align:left">集群中的 broker 数量</td><td style="text-align:left">2</td></tr>
-<tr><td style="text-align:left"><code>num_proxy_nodes</code></td><td style="text-align:left">集群中的 proxy 数量</td><td style="text-align:left">1</td></tr>
+<tr><td style="text-align:left"><code>下注节点数</code></td><td style="text-align:left">集群中的 bookie 数量</td><td style="text-align:left">3</td></tr>
+<tr><td style="text-align:left"><code>num代理节点</code></td><td style="text-align:left">集群中的 broker 数量</td><td style="text-align:left">2</td></tr>
+<tr><td style="text-align:left"><code>num代理节点</code></td><td style="text-align:left">集群中的 proxy 数量</td><td style="text-align:left">1</td></tr>
 <tr><td style="text-align:left"><code>base_cidr_block</code></td><td style="text-align:left">网络资源用于集群的root <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">CIDR</a></td><td style="text-align:left"><code>10.0.0.0/16</code></td></tr>
-<tr><td style="text-align:left"><code>instance_types</code></td><td style="text-align:left">要使用的 EC2 实例类型。 此变量是两个键的地图： <code>zookeeper</code> 适用于ZooKeeper 实例， <code>bookie</code> 适用于 BookKeeper bookie， <code>broker</code> 和 <code>proxy</code> 适用于 Pulsar broker 和 bookie</td><td style="text-align:left"><code>t2.small</code> (ZooKeeper), <code>i3.xlarge</code> (BookKeeper) and <code>c5.2xlarge</code> (Brokers/Proxies)</td></tr>
+<tr><td style="text-align:left"><code>实例类型</code></td><td style="text-align:left">要使用的 EC2 实例类型。 此变量是两个键的地图： <code>zookeeper</code> 适用于ZooKeeper 实例， <code>bookie</code> 适用于 BookKeeper bookie， <code>broker</code> 和 <code>proxy</code> 适用于 Pulsar broker 和 bookie</td><td style="text-align:left"><code>t2.small</code> (ZooKeeper), <code>i3.xlarge</code> (BookKeeper) and <code>c5.2xlarge</code> (Brokers/Proxies)</td></tr>
 </tbody>
 </table>
 <h3><a class="anchor" aria-hidden="true" id="安装的内容"></a><a href="#安装的内容" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>安装的内容</h3>
@@ -160,15 +160,15 @@ id_rsa               id_rsa.pub
 <li>9 total <a href="https://aws.amazon.com/ec2">Elastic Compute Cloud</a> (EC2) instances running the <a href="https://access.redhat.com/articles/3135091">ami-9fa343e7</a> Amazon Machine Image (AMI), which runs <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html-single/7.4_release_notes/index">Red Hat Enterprise Linux (RHEL) 7.4</a>. By default, that includes:
 <ul>
 <li>3 small VMs for ZooKeeper (<a href="https://www.ec2instances.info/?selected=t2.small">t2.small</a> instances)</li>
-<li>3 larger VMs for BookKeeper <a href="/docs/zh-CN/2.7.4/reference-terminology#bookie">bookies</a> (<a href="https://www.ec2instances.info/?selected=i3.xlarge">i3.xlarge</a> instances)</li>
-<li>2 larger VMs for Pulsar <a href="/docs/zh-CN/2.7.4/reference-terminology#broker">brokers</a> (<a href="https://www.ec2instances.info/?selected=c5.2xlarge">c5.2xlarge</a> instances)</li>
-<li>1 larger VMs for Pulsar <a href="/docs/zh-CN/2.7.4/reference-terminology#proxy">proxy</a> (<a href="https://www.ec2instances.info/?selected=c5.2xlarge">c5.2xlarge</a> instances)</li>
+<li>3个更大的虚拟机供簿记员&lt;a href=“reference ternology.md#bookie”&gt;簿记员使用（&lt;a href=”https://www.ec2instances.info/?selected=i3.xlarge“&gt;i3.xlarge</a>实例）</li>
+<li>为Pulsar经纪人提供2台更大的虚拟机https://www.ec2instances.info/?selected=c5.2xlarge“&gt;c5.2xlarge</a>实例）</li>
+<li>1台更大的Pulsar虚拟机&lt;a href=“reference terminology.md#proxy”&gt;proxy</a>（&lt;a href=”https://www.ec2instances.info/?selected=c5.2xlarge“&gt;c5.2xlarge</a>实例）</li>
 </ul></li>
-<li>An EC2 <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">security group</a></li>
-<li>A <a href="https://aws.amazon.com/vpc/">virtual private cloud</a> (VPC) for security</li>
-<li>An <a href="https://aws.amazon.com/api-gateway/">API Gateway</a> for connections from the outside world</li>
-<li>A <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html">route table</a> for the Pulsar cluster's VPC</li>
-<li>A <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html">subnet</a> for the VPC</li>
+<li>EC2<a href=”http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html“>安全组</a></li>
+<li>A<A href=”https://aws.amazon.com/vpc/“>虚拟私有云（VPC）用于安全</li>
+<li>a<a href=”https://aws.amazon.com/api-gateway/“>API网关</a>用于连接外部世界</li>
+<li>A<A href=”http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html“>脉冲星群VPC路由表</a></li>
+<li>A<A href=”http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html“>专有网络的子网</a></li>
 </ul>
 <p>集群的所以EC2实例都运行在 <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html">us-west-2</a> 区域。</p>
 <h3><a class="anchor" aria-hidden="true" id="获取您的-pulsar-连接-url"></a><a href="#获取您的-pulsar-连接-url" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>获取您的 Pulsar 连接 URL</h3>
